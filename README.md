@@ -23,6 +23,24 @@ docker compose up -d --build
 
 Open `http://YOUR-SERVER-IP:8080`.
 
+## Run with Dockge
+
+The `compose.dockge.yml` file pulls the published multi-platform image from GitHub Container Registry and does not require the source repository on the Docker host.
+
+1. Create a stack named `convert-a-tron` in Dockge.
+2. Paste the contents of `compose.dockge.yml` into the Compose editor.
+3. Optionally paste the following into the `.env` editor:
+
+```dotenv
+CONVERT_A_TRON_PORT=8080
+MAX_UPLOAD_MB=500
+JOB_TTL_MINUTES=60
+```
+
+4. Deploy the stack and open `http://YOUR-SERVER-IP:8080`.
+
+The GitHub Actions workflow publishes `ghcr.io/endless1233214/convert-a-tron:latest` whenever the `main` branch is updated. The package must be public for Dockge to pull it without registry credentials.
+
 ## Run locally for development
 
 ```bash
