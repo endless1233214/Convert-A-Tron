@@ -7,8 +7,11 @@ from typing import Callable
 
 from PIL import Image, ImageOps
 from pypdf import PdfReader, PdfWriter
+from pillow_heif import register_heif_opener
 
-IMAGE_FORMATS = {"jpg", "jpeg", "png", "webp", "bmp", "gif", "tiff"}
+register_heif_opener()
+
+IMAGE_FORMATS = {"heif", "heic", "hif", "jpg", "jpeg", "png", "webp", "bmp", "gif", "tiff"}
 AUDIO_FORMATS = {"mp3", "wav", "flac", "ogg", "m4a", "aac"}
 VIDEO_FORMATS = {"mp4", "mkv", "mov", "webm", "avi"}
 
