@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Private, self-hosted file conversion for images, audio, video, documents, and PDFs.">
+  <title>Convert-A-Tron — Private file conversion</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div>
+        <span class="badge">SELF-HOSTED • PRIVATE</span>
+        <h1>Convert-A-Tron</h1>
+        <p>Choose the file type you already have. You’ll get a focused converter with only the outputs that actually work.</p>
+      </div>
+      <div class="lock" aria-label="Files are processed locally">🔒<small>Processed locally</small></div>
+    </header>
+
+    <nav class="category-nav" aria-label="Format categories">
+      <a href="#images">Images</a><a href="#audio">Audio</a><a href="#video">Video</a><a href="#documents">Documents</a><a href="#pdf-tools">PDF tools</a>
+    </nav>
+
+    <div class="catalog">$format_sections</div>
+
+    <section class="format-section" id="pdf-tools">
+      <div class="section-heading"><h2>PDF & privacy tools</h2><span>3 tools</span></div>
+      <div class="tool-grid">
+        <form class="card" data-endpoint="/api/strip-metadata">
+          <h3>Remove image metadata</h3><p>Create a clean copy without EXIF or GPS metadata.</p>
+          <input type="file" name="file" accept="image/*" required>
+          <button>Clean & download</button><div class="status" aria-live="polite"></div>
+        </form>
+        <form class="card" data-endpoint="/api/merge-pdf">
+          <h3>Merge PDFs</h3><p>Combine PDF files in the order you select them.</p>
+          <input type="file" name="files" accept="application/pdf" multiple required>
+          <button>Merge & download</button><div class="status" aria-live="polite"></div>
+        </form>
+        <form class="card" data-endpoint="/api/pdf-to-images">
+          <h3>PDF to PNG</h3><p>Download every PDF page as PNG files in a ZIP archive.</p>
+          <input type="file" name="file" accept="application/pdf" required>
+          <button>Convert & download</button><div class="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer>Files stay on this server and temporary jobs are deleted. Maximum upload: <span id="limit">loading…</span>.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

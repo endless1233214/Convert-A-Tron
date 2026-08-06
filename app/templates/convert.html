@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="$description">
+  <title>Convert $format_label files — Convert-A-Tron</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="converter-shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Convert-A-Tron</a><span>›</span><span>$category</span><span>›</span><span>$format_label</span></nav>
+    <section class="converter-layout">
+      <div class="converter-copy">
+        <span class="badge">PRIVATE $format_label CONVERTER</span>
+        <h1>Convert $format_label files</h1>
+        <p>$description Your upload is processed inside this self-hosted container and is never sent to a third-party service.</p>
+        <ul class="trust-list"><li>No account required</li><li>No analytics or telemetry</li><li>Temporary files are automatically deleted</li></ul>
+      </div>
+      <form class="card converter-card" data-endpoint="/api/convert">
+        <div class="file-mark">.$format_slug</div>
+        <h2>Choose your $format_label file</h2>
+        <label class="file-picker">Source file<input type="file" name="file" accept="$accept" required></label>
+        <label>Convert to<select name="output_format" required>$output_options</select></label>
+        <button>Convert & download</button>
+        <div class="status" aria-live="polite"></div>
+      </form>
+    </section>
+    <footer>Files stay on this server and temporary jobs are deleted. Maximum upload: <span id="limit">loading…</span>.</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
