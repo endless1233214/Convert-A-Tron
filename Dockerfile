@@ -4,10 +4,13 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     DATA_DIR=/data \
     PATH=/opt/venv/bin:$PATH
+# The Ubuntu base includes the Pebble service manager, but this image starts
+# Uvicorn directly. Remove the unused Go binary from the runtime/CVE surface.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 python3-venv \
     ffmpeg libreoffice-core libreoffice-writer libreoffice-calc libreoffice-impress \
     poppler-utils ca-certificates fonts-dejavu-core \
+    && rm -f /usr/bin/pebble \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY requirements.txt .
